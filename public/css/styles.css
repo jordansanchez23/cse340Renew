@@ -7,8 +7,10 @@
 
 /************* Global Styles *******************/
 :root {
-  --background-color: white;
-  --text-color: black;
+  --background-color-1: white;
+  --background-color-2: rgb(66, 66, 66);
+  --text-color-1: black;
+  --text-color-2: white;
   --hover-color: #00BFEF;
 }
 
@@ -19,7 +21,7 @@
   align-items: center;
   max-width: 100%;
   padding: 1rem;
-  margin: 1rem; /*chech this line in larger screen, viewport might be affected*/
+  margin: 0.5rem; /*chech this line in larger screen, viewport might be affected*/
 }
 
 .siteName a, #tools a {
@@ -32,8 +34,17 @@
   font-size: 2.5rem;
 }
 
-/************* Navigator *******************/
-
+/************* Navigation *******************/
+.navigation ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  background-color: var(--background-color-2);
+  color: var(--text-color-2);
+  padding: 1rem;
+  margin: 0;
+}
 
 
 /************* Body (Main) *******************/
