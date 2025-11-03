@@ -79,6 +79,7 @@ main {
   background-color: rgb(221, 212, 212);
   max-width: 200px;
   justify-content: flex-start;
+  align-items: center;
   }
 
 #callToActionBox > h2, p {
@@ -90,6 +91,9 @@ main {
   background-color: var(--hover-color);
   font-weight: 700;
   text-decoration: none;
+  max-width: 70%;
+  text-align: center;
+  padding: 0.5rem;
 }
 
 /*Upgrades*/
