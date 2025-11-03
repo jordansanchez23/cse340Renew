@@ -75,6 +75,7 @@ main {
 
 .hero img {
   position: absolute;
+  max-width: auto;
 }
 
 /*Call to Action Box*/
@@ -138,3 +139,35 @@ order: 0;
 
 
 /************* Media Query (for larger screens) *******************/
+@media screen and (min-width: 950px) {
+  body {
+    background-image: url("/images/site/checkerboard.jpg")
+  }
+
+  #wrapper {
+    margin: 0 auto;
+    background-color: var(--background-color-1);
+    max-width: 60%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .hero img {
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .hero {
+    max-width: 80%;
+    margin: auto;
+  }
+
+  .hero, .dUpgrades, .dReviews {
+    order: 0;
+  }
+
+  .largerOrder {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
