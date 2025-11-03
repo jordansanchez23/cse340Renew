@@ -71,10 +71,12 @@ main {
   order: -1;
 }
 
-
 /*Upgrades*/
+.dUpgrades{
+  order: 1;
+}
+
 #dUpgradesCards {
-order: 1;
 display: grid;
 grid-template-columns: 1fr 1fr;
 }
