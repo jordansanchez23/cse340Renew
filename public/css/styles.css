@@ -75,14 +75,13 @@ main {
 
 .hero img {
   position: absolute;
-  max-width: auto;
 }
 
 /*Call to Action Box*/
 #callToActionBox {
   display: flex;
   flex-direction: column;
-  color: --background-color-2;
+  color: var(--text-color-1);
   background-color: rgb(221, 212, 212);
   max-width: 200px;
   justify-content: flex-start;
@@ -117,8 +116,7 @@ grid-template-columns: 1fr 1fr;
 .dUpgradesCard>img {
   background-color: var(--hover-color);
   padding: 2rem;
-  border: 0.1rem solid var(--background-color-2);
-  border-color: 1rem;
+  border: 0.2rem solid var(--background-color-2);
 }
 
 /*Reviews*/
