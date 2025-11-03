@@ -82,7 +82,7 @@ main {
 #callToActionBox {
   display: flex;
   flex-direction: column;
-  color: var(--hover-color);
+  color: --background-color-2;
   background-color: rgb(221, 212, 212);
   max-width: 200px;
   justify-content: flex-start;
