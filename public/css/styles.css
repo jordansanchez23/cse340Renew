@@ -71,6 +71,27 @@ main {
   order: -1;
 }
 
+/*Call to Action Box*/
+#callToActionBox {
+  display: flex;
+  flex-direction: column;
+  color: var(--hover-color);
+  background-color: rgb(221, 212, 212);
+  max-width: 200px;
+  justify-content: flex-start;
+  }
+
+#callToActionBox > h2, p {
+  line-height: 0;
+}
+
+.callToActionButton {
+  color: var(--text-color-1);
+  background-color: var(--hover-color);
+  font-weight: 700;
+  text-decoration: none;
+}
+
 /*Upgrades*/
 .dUpgrades{
   order: 1;
@@ -87,7 +108,6 @@ grid-template-columns: 1fr 1fr;
   border: 0.1rem solid var(--background-color-2);
   border-color: 1rem;
 }
-
 
 /*Reviews*/
 .dReviews {
