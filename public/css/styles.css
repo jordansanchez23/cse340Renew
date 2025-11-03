@@ -70,6 +70,7 @@ main {
 .hero {
   order: -1;
   position: relative;
+  min-height: 22rem;
 }
 
 .hero img {
