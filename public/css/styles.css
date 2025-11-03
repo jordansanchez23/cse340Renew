@@ -60,6 +60,42 @@ h1, h2 {
   color: var(--text-color);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/*Hero*/
+.hero {
+  order: -1;
+}
+
+
+/*Upgrades*/
+#dUpgradesCards {
+order: 1;
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+
+.dUpgradesCard>img {
+  background-color: var(--hover-color);
+  padding: 2rem;
+  border: 0.1rem solid var(--background-color-2);
+  border-color: 1rem;
+}
+
+
+/*Reviews*/
+.dReviews {
+order: 0;
+}
+
+.opinion {
+  padding: 0.5rem;
+}
+
 
 /************* Footer *******************/
 .copyright {
