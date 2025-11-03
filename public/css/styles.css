@@ -62,7 +62,10 @@ h1, h2 {
 
 
 /************* Footer *******************/
-
+.copyright {
+  display: flex;
+  justify-content: flex-start;
+}
 
 
 /************* Media Query (for larger screens) *******************/
