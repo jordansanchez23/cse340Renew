@@ -35,5 +35,14 @@ invCont.buildByInventoryId = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Build Broken Link
+ * ************************** */
+invCont.buildBrokenLink = async function (req, res, next) {
+  throw error
+}
 
 module.exports = invCont
+
+
+
