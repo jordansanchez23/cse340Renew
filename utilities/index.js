@@ -57,6 +57,25 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+/* **************************************
+* Build the Vehicle view HTML
+* ************************************ */
+Util.buildVehicleCard = async function(vehicleInformation) {
+  let vehicleArea = ""
+  vehicleArea = `
+  <section class="vehicleCard">
+    <img src="${vehicleInformation.inv_image}" alt="image of ${vehicleInformation.inv_make} ${vehicleInformation.inv_model}">
+    <h3>${vehicleInformation.inv_make} ${vehicleInformation.inv_model} Details</h3>
+    <p><strong>Price: </strong>${new Intl.NumberFormat('en-US').format(vehicleInformation.inv_price)}</p>
+    <p><strong>Description: </strong>${vehicleInformation.inv_description}</p>
+    <p><strong>Color: </strong>${vehicleInformation.inv_color}</p>
+    <p><strong>Miles: </strong>${vehicleInformation.inv_miles.toLocaleString('en-US')}</p>
+    </section>
+  `
+  return vehicleArea
+}
+
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
