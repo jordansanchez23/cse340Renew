@@ -46,6 +46,11 @@
   margin: 0;
 }
 
+.navigation a:link, .navigation a:visited {
+  color: var(--text-color-1);
+  text-decoration: none;
+}
+
 
 /************* Body (Main) *******************/
 
@@ -89,7 +94,7 @@ main {
   position: absolute;
   }
 
-#callToActionBox > h2, p {
+#callToActionBox > h2, #callToActionBox > p {
   line-height: 0;
 }
 
@@ -128,11 +133,48 @@ order: 0;
   padding: 0.5rem;
 }
 
+/************* Inventory Display *******************/
+#inv-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+  list-style-type: none;
+}
+
+#inv-display a{
+  text-decoration: none;
+}
+
+#inv-display a:link, #inv-display a:visited {
+  color: var(--text-color-1);
+}
+
+.item {
+  border: 3px solid;
+  border-radius: 5px;
+  color: gray;
+}
+
+/************* Vehicle Display *******************/
+
+.vehicleCard img, .vehicleCardContent {
+  padding: 1rem;
+  width: 100%;
+}
 
 /************* Footer *******************/
 .copyright {
   display: flex;
   justify-content: flex-start;
+}
+
+footer a{
+  text-decoration: none;
+}
+
+footer a:link, footer a:visited {
+  color: var(--text-color-1);
 }
 
 
@@ -168,4 +210,12 @@ order: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
+  /************* Vehicle Display *******************/
+
+.vehicleCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 }

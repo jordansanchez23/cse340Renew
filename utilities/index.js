@@ -32,7 +32,7 @@ Util.buildClassificationGrid = async function(data){
   if(data.length > 0){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
-      grid += '<li>'
+      grid += '<li class=item>'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
       + 'details"><img src="' + vehicle.inv_thumbnail 
@@ -63,13 +63,15 @@ Util.buildClassificationGrid = async function(data){
 Util.buildVehicleCard = async function(vehicleInformation) {
   let vehicleArea = ""
   vehicleArea = `
-  <section class="vehicleCard">
-    <img src="${vehicleInformation.inv_image}" alt="image of ${vehicleInformation.inv_make} ${vehicleInformation.inv_model}">
-    <h3>${vehicleInformation.inv_make} ${vehicleInformation.inv_model} Details</h3>
-    <p><strong>Price: </strong>${new Intl.NumberFormat('en-US').format(vehicleInformation.inv_price)}</p>
-    <p><strong>Description: </strong>${vehicleInformation.inv_description}</p>
-    <p><strong>Color: </strong>${vehicleInformation.inv_color}</p>
-    <p><strong>Miles: </strong>${vehicleInformation.inv_miles.toLocaleString('en-US')}</p>
+  <section class=vehicleCard>
+      <img src="${vehicleInformation.inv_image}" alt="image of ${vehicleInformation.inv_make} ${vehicleInformation.inv_model}">
+      <div class=vehicleCardContent>
+        <h2>${vehicleInformation.inv_make} ${vehicleInformation.inv_model} Details</h2>
+        <p><strong>Price: </strong>${new Intl.NumberFormat('en-US').format(vehicleInformation.inv_price)}</p>
+        <p><strong>Description: </strong>${vehicleInformation.inv_description}</p>
+        <p><strong>Color: </strong>${vehicleInformation.inv_color}</p>
+        <p><strong>Miles: </strong>${vehicleInformation.inv_miles.toLocaleString('en-US')}</p>
+      </div>
     </section>
   `
   return vehicleArea
