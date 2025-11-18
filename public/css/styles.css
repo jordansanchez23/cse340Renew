@@ -41,13 +41,15 @@
   align-items: center;
   list-style-type: none;
   background-color: var(--background-color-2);
-  color: var(--text-color-2);
   padding: 1rem;
   margin: 0;
 }
 
+.navigation ul li a{
+  color: var(--text-color-2);
+}
 .navigation a:link, .navigation a:visited {
-  color: var(--text-color-1);
+  color: var(--text-color-2);
   text-decoration: none;
 }
 
@@ -68,6 +70,10 @@ h1, h2 {
 main {
   display: flex;
   flex-direction: column;
+}
+
+p, span {
+  color: var(--text-color-1);
 }
 
 
