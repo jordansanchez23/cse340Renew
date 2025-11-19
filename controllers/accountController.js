@@ -14,9 +14,9 @@ async function buildLogin(req, res, next) {
 /* ***************************
  *  Build Broken Link
  * ************************** */
-accountController.buildBrokenLink = async function (req, res, next) {
-  throw error
-}
+//accountController.buildBrokenLink = async function (req, res, next) {
+//  throw error
+//}
 
 module.exports = { buildLogin }
 

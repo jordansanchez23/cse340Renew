@@ -5,7 +5,7 @@ const accountController = require("../controllers/accountController")
 const utilities = require("../utilities/index")
 
 // Route to build account by My account view
-router.get("/type/:accountId", utilities.handleErrors(accountController.buildByAccountId));
+router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(accountController.buildBrokenLink));
