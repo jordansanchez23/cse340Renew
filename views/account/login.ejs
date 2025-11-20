@@ -4,6 +4,8 @@
   res.redirect('/')
 } %>
 
+<%- messages() %>
+
 <section class="formConteiner">
 <form action="/account/login" method="post">
     <label for="account_email">Email:</label>
@@ -15,5 +17,5 @@
 </form>
 <p>No account? <a href="/account/register">Sign-up</a></p>
 </section>
-<%# messages() %>
+
 
