@@ -206,6 +206,16 @@ footer a:link, footer a:visited {
   text-decoration: none;
 }
 
+/******* Register Form ***********/
+input:required:valid {
+  background-color: rgb(216, 238, 182);
+}
+
+
+input:focus:invalid {
+  background-color: rgb(221, 192, 192);
+}
+
 
 /************* Media Query (for larger screens) *******************/
 @media screen and (min-width: 950px) {
