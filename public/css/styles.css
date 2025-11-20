@@ -183,6 +183,7 @@ footer a:link, footer a:visited {
   color: var(--text-color-1);
 }
 
+/************* Form *******************/
 .formConteiner {
   max-width: 320px;
   margin: 2rem auto;
@@ -190,6 +191,20 @@ footer a:link, footer a:visited {
   background-color: var(--background-color-2);
 }
 
+.formConteiner form > * {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.formConteiner form button {
+  border: 2px solid var(--text-color-1);
+  border-radius: 1rem;
+}
+
+.formConteiner a:link, .formConteiner a:visited {
+  color: var(--text-color-2);
+  text-decoration: none;
+}
 
 
 /************* Media Query (for larger screens) *******************/
