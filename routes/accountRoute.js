@@ -10,6 +10,9 @@ router.get("/login", utilities.handleErrors(accountController.buildLogin));
 // Route to build Register view
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 
+// Route to post the new register account
+router.post('/register', utilities.handleErrors(accountController.registerAccount))
+
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(accountController.buildBrokenLink));
 
