@@ -17,13 +17,13 @@
 <section class="formConteiner">
 <form action="/account/register" method="post">
     <label for="account_firstname">First Name</label>
-    <input type="text" id="account_firstname" placeholder="Joseph" name="account_firstname" required>
+    <input type="text" id="account_firstname" placeholder="Joseph" name="account_firstname" required value="<%= locals.account_firstname %>">
 
     <label for="account_lastname">Last Name</label>
-    <input type="text" id="account_lastname" placeholder="Smith" name="account_lastname" required>
+    <input type="text" id="account_lastname" placeholder="Smith" name="account_lastname" required value="<%= locals.account_lastname %>">
 
     <label for="account_email">Email</label>
-    <input type="email" id="account_email" placeholder="placeholder@example.com" name="account_email" required>
+    <input type="email" id="account_email" placeholder="placeholder@example.com" name="account_email" required value="<%= locals.account_email %>">
 
     <label for="account_password">Password</label>
     <div class="passwordAlert">
