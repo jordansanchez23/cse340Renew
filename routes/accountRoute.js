@@ -15,21 +15,25 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 // Process the registration data
 router.post(
   "/register",
-  regValidate.registationRules(),
+  regValidate.registrationRules(),
   regValidate.checkRegData,
-  utilities.handleErrors(accountController.registerAccount)
+  /*utilities.handleErrors(*/accountController.registerAccount/*)*/
+)
+
+// Route to post the login account
+// Process the Login data
+// Process the login attempt
+router.post(
+  "/login",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
+  (req, res) => {
+    res.status(200).send('login process')
+  }
 )
 
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(accountController.buildBrokenLink));
 
-
-// Process the login attempt
-router.post(
-  "/login",
-  (req, res) => {
-    res.status(200).send('login process')
-  }
-)
 
 module.exports = router;
