@@ -59,6 +59,37 @@ invCont.buildAddClassification = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Process to add classification (Post)
+ * ************************** */
+invCont.processAddClassification = async function(req, res) {
+  const { classification_name } = req.body
+
+  const processResult = await invModel.processAddClassification(
+        classification_name
+    )
+
+  let nav = await utilities.getNav()
+
+  if (processResult) {
+    req.flash(
+      "notice",
+      `${classification_name} saved as a new Classification.`
+    )
+    res.status(201).render("inventory/management", {
+      title: "Management",
+      nav,
+      errors: null
+    })
+  } else {
+    req.flash("message warning", "Sorry, the process to add a new classification failed.")
+    res.status(501).render("inventory/add-classification", {
+      title: "Add classification",
+      nav,
+      classification_name
+    })
+  }
+}
 
 /* ***************************
  *  Build Broken Link

@@ -24,9 +24,7 @@ router.post(
   "/add-classification",
   inventoryValidate.addClassificationRules(),
   inventoryValidate.checkAddClassificationData,
-  (req, res) => {
-    res.status(200).send('Add classification process')
-  }
+  utilities.handleErrors(invController.processAddClassification)
 )
 
 //Route to get the error 500//

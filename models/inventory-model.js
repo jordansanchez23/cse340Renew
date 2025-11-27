@@ -44,7 +44,7 @@ async function getVehicleById(inventory_Id) {
 /* ***************************
  *  Register Classification_name
  * ************************** */
-async function addClassificationName(classification_name){
+async function processAddClassification(classification_name){
   try {
     const sql = "INSERT INTO classification (classification_name) VALUES ($1) RETURNING *"
     return await pool.query(sql, [classification_name])
@@ -54,4 +54,4 @@ async function addClassificationName(classification_name){
 }
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, addClassificationName}
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, processAddClassification}
