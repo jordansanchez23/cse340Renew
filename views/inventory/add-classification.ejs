@@ -17,7 +17,7 @@
 <section class="formConteiner">
 <form action="/inv/add-classification" method="post">
     <label for="classification_name">Add classification name</label>
-    <input type="text" id="classification_name" placeholder="Type the classification name" name="classification_name" required>
+    <input type="text" id="classification_name" placeholder="Type the classification name" name="classification_name" title="The new classification name cannot contain a space or special character of any kind" pattern="^[A-Za-z0-9]+$" required>
     <span>The new classification name cannot contain a space or special character of any kind</span> 
     <button type="submit">Add New Classification</button>
 </form>
