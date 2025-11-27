@@ -13,6 +13,9 @@ router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByI
 //Route to build individual view for each vehicle//
 router.get("/", utilities.handleErrors(invController.buildManagement));
 
+//Route to build Add Classification view//
+router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
+
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(invController.buildBrokenLink));
 

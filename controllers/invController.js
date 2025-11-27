@@ -47,6 +47,18 @@ invCont.buildManagement = async function (req, res, next) {
   })
 }
 
+/* ****************************************
+*  Build Add classifcation View
+* *************************************** */
+invCont.buildAddClassification = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Add Classification",
+    nav,
+    errors: null
+  })
+}
+
 
 /* ***************************
  *  Build Broken Link
