@@ -91,6 +91,19 @@ invCont.processAddClassification = async function(req, res) {
   }
 }
 
+/* ****************************************
+*  Build Add inventory View
+* *************************************** */
+invCont.buildAddInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-inventory", {
+    title: "Add Inventory",
+    nav,
+    
+    errors: null
+  })
+}
+
 /* ***************************
  *  Build Broken Link
  * ************************** */

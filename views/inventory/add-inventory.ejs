@@ -1,0 +1,55 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<section class="formConteiner">
+<form action="/inv/add-inventory" method="post">
+    <label for="classification_name">classification</label>
+    <select id="classification_name" placeholder="Type the classification name" name="classification_name" title="Type the classification" required value="<%= locals.classification_name %>">
+        <option value="#">Choose a Classification</option>
+
+    <label for="inv_make">Make</label>
+    <input type="text" id="inv_make" placeholder="Type the make name" name="inv_make" title="Type the classification" required value="<%= locals.inv_make %>">
+    
+    <label for="inv_model">Model</label>
+    <input type="text" id="inv_model" placeholder="Type the model name" name="inv_model" title="Type the Model" required value="<%= locals.inv_model%>">
+    
+    <label for="inv_description">Description</label>
+    <input type="text" id="inv_description" placeholder="Describe the car" name="inv_description" title="Describe the best you can" required value="<%= locals.inv_description %>">
+    
+    <label for="inv_image">Image path</label>
+    <input type="text" id="inv_image" placeholder="Type the image path" name="inv_image" title="Remember taht also a '.' can get the wrong path" required value="<%= locals.inv_image %>">
+    
+    <label for="inv_thumbnail">Thumbnail path</label>
+    <input type="text" id="inv_thumbnail" placeholder="Type the thumbnail path" name="inv_thumbnail" title="Remember taht also a '.' can get the wrong path" required value="<%= locals.inv_thumbnail %>">
+    
+    <label for="inv_price">Price</label>
+    <input type="number" id="inv_price" placeholder="Type the Price" name="inv_price" title="The price only allows numbers" required value="<%= locals.inv_price %>">
+    
+    <label for="inv_year">Year</label>
+    <input type="number" id="inv_year" placeholder="Type the year" name="inv_year" title="The Year only allows numbers" min="1980" max="2026" required value="<%= locals.inv_year %>">
+    
+    <label for="inv_miles">Miles</label>
+    <input type="number" id="inv_miles" placeholder="Type the miles" name="inv_miles" title="The miles only allows numbers" required value="<%= locals.inv_miles %>">
+    
+    <label for="inv_color">Color</label>
+    <input type="text" id="inv_color" placeholder="Type the Color" name="inv_color" title="The color cannot contain a space or special character of any kind" pattern="^[A-Za-z]+$" required value="<%= locals.inv_color %>">
+    
+    <button type="submit">Add New Vehicle</button>
+</form>
+</section>
+
+
+

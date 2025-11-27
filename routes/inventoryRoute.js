@@ -11,20 +11,29 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 //Route to build individual view for each vehicle//
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryId));
 
-//Route to build individual view for each vehicle//
+//Route to build Management//
 router.get("/", utilities.handleErrors(invController.buildManagement));
 
 //Route to build Add Classification view//
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 
-// Route to post the login account
-// Process the Login data
-// Process the login attempt
+// Route to post the classification 
 router.post(
   "/add-classification",
   inventoryValidate.addClassificationRules(),
   inventoryValidate.checkAddClassificationData,
   utilities.handleErrors(invController.processAddClassification)
+)
+
+//Route to build Add Inventory view//
+router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
+
+// Route to post the add Inventory
+router.post(
+  "/add-inventory",
+  inventoryValidate.addInventoryRules(),
+  inventoryValidate.checkAddInventoryData,
+  utilities.handleErrors(invController.processAddInventory)
 )
 
 //Route to get the error 500//
