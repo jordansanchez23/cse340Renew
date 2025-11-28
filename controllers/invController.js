@@ -96,12 +96,75 @@ invCont.processAddClassification = async function(req, res) {
 * *************************************** */
 invCont.buildAddInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
+  let classificationList = await utilities.buildClassificationList()
   res.render("./inventory/add-inventory", {
     title: "Add Inventory",
     nav,
-    
+    classificationList,
     errors: null
   })
+}
+
+/* ***************************
+ *  Process to add Inventory (Post)
+ * ************************** */
+invCont.processAddInventory = async function(req, res) {
+  const {
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id } = req.body
+
+  const processResult = await invModel.processAddInventory(
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_miles,
+        inv_color,
+        classification_id
+    )
+
+  let nav = await utilities.getNav()
+  let classificationList = await utilities.buildClassificationList(classification_id)
+
+  if (processResult) {
+    req.flash(
+      "notice",
+      `${inv_make} ${inv_model} ${inv_year} saved as a new Vehicle.`
+    )
+    res.status(201).render("inventory/management", {
+      title: "Management",
+      nav,
+      errors: null
+    })
+  } else {
+    req.flash("message warning", "Sorry, the process to add a new Inventory failed.")
+    res.status(501).render("inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationList,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id
+    })
+  }
 }
 
 /* ***************************
