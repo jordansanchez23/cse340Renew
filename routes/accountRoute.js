@@ -32,6 +32,9 @@ router.post(
   }
 )
 
+// Route to build when the user is authenticaded
+router.get("/account", utilities.handleErrors(accountController.buildAuthenticatedAccount));
+
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(accountController.buildBrokenLink));
 
