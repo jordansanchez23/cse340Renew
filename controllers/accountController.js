@@ -116,6 +116,17 @@ async function accountLogin(req, res) {
   }
 }
 
+/* ****************************************
+*  Deliver Authenticated account view
+* *************************************** */
+async function buildAuthenticatedAccount(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/authenticatedAccount", {
+    title: "You are logged in",
+    nav,
+    errors: null
+  })
+}
 
 
 /* ***************************
@@ -125,7 +136,7 @@ async function accountLogin(req, res) {
 //  throw error
 //}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAuthenticatedAccount }
 
 
 
