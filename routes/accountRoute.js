@@ -27,9 +27,8 @@ router.post(
   "/login",
   regValidate.loginRules(),
   regValidate.checkLoginData,
-  (req, res) => {
     utilities.handleErrors(accountController.accountLogin)
-  }
+  
 )
 
 // Route to build when the user is authenticaded
