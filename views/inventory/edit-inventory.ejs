@@ -47,6 +47,9 @@
     <input type="text" id="inv_color" placeholder="Type the Color" name="inv_color" title="The color cannot contain a space or special character of any kind" pattern="^[A-Za-z]+$" required value="<%= locals.inv_color %>">
     
     <button type="submit">Update Vehicle</button>
+    <input type="hidden" name="inv_id"
+    <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+    <% } %>>
 </form>
 </section>
 
