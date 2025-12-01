@@ -36,6 +36,9 @@ router.post(
   utilities.handleErrors(invController.processAddInventory)
 )
 
+//Route to build the classification List//
+router.get("/inv/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(invController.buildBrokenLink));
 
