@@ -151,4 +151,118 @@ validate.checkAddInventoryData = async (req, res, next) => {
   next()
 }
 
+/* ******************************
+ * Check data and return errors to editing view
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { inv_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_miles,
+    inv_color,
+    classification_id } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    let classificationList = await utilities.buildClassificationList(classification_id) 
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: "Edit" + inv_make + " " + inv_model,
+      nav,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classificationList
+    })
+    return
+  }
+  next()
+}
+
+/*  **********************************
+    *  Classification Data Validation Rules
+    * ********************************* */
+    validate.newInventoryRules = () => {
+      return [
+        body("inv_make")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Please type the make"), // on error this message is sent.
+
+            body("inv_model")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Please type the model"), // on error this message is sent.
+
+            body("inv_year")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isNumeric()
+            .withMessage("The input should be numeric")
+            .isInt({ min: 1980, max: 2026 })
+            .withMessage("Please type a year between 1980 and 2026"), // on error this message is sent.
+
+            body("inv_description")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Please type the description"), // on error this message is sent.
+
+            body("inv_image")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Please type the image path"), // on error this message is sent.
+
+            body("inv_thumbnail")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Please type the thumbnail path"), // on error this message is sent.
+
+            body("inv_price")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isNumeric()
+            .withMessage("The price should be numeric"), // on error this message is sent.
+
+            body("inv_miles")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isNumeric()
+            .withMessage("The miles should be numeric"), // on error this message is sent.
+
+            body("inv_color")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isAlpha()
+            .withMessage("Please type the color"), // on error this message is sent.
+
+            body("classification_id")
+            .trim()
+            .escape()
+            .notEmpty()
+            .withMessage("Please select the classification") // on error this message is sent.
+      ]
+    }
+
 module.exports = validate

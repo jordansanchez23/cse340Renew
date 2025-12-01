@@ -42,6 +42,14 @@ router.get("/getInventory/:classification_id", utilities.handleErrors(invControl
 //Route to build the edit view of the item
 router.get("/edit/:inventoryId", utilities.handleErrors(invController.buildEditView));
 
+// Route to update the item Inventory
+router.post(
+  "/update/",
+  inventoryValidate.newInventoryRules(),
+  inventoryValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+)
+
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(invController.buildBrokenLink));
 
