@@ -40,7 +40,7 @@ router.post(
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
 //Route to build the edit view of the item
-router.get("/edit/:classification_id", utilities.handleErrors(invController.buildEditView));
+router.get("/edit/:inventoryId", utilities.handleErrors(invController.buildEditView));
 
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(invController.buildBrokenLink));
