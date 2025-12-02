@@ -29,10 +29,10 @@
     <input type="text" id="inv_description" placeholder="Describe the car" name="inv_description" title="Describe the best you can" required value="<%= locals.inv_description %>">
     
     <label for="inv_image">Image path</label>
-    <input type="text" id="inv_image" placeholder="Type the image path" name="inv_image" title="Remember taht also a '.' can get the wrong path" required value="<%= locals.inv_image %>">
+    <input type="text" id="inv_image" placeholder="Type the image path" name="inv_image" title="Remember taht also a '.' can get the wrong path" required value="<%- locals.inv_image %>">
     
     <label for="inv_thumbnail">Thumbnail path</label>
-    <input type="text" id="inv_thumbnail" placeholder="Type the thumbnail path" name="inv_thumbnail" title="Remember taht also a '.' can get the wrong path" required value="<%= locals.inv_thumbnail %>">
+    <input type="text" id="inv_thumbnail" placeholder="Type the thumbnail path" name="inv_thumbnail" title="Remember taht also a '.' can get the wrong path" required value="<%- locals.inv_thumbnail %>">
     
     <label for="inv_price">Price</label>
     <input type="number" id="inv_price" placeholder="Type the Price" name="inv_price" title="The price only allows numbers" required value="<%= locals.inv_price %>">
