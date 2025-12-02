@@ -297,6 +297,29 @@ invCont.buildDeleteItemView = async function (req, res, next) {
   })
 }
 
+/* ***************************
+ *  Delete Inventory Data
+ * ************************** */
+invCont.deleteInventory = async function (req, res, next) {
+  const {
+    inv_id
+  } = req.body
+
+  const inv_Id_Int = parseInt(req.body.inv_id)
+  const deleteResult = await invModel.deleteItemInventory(
+    inv_Id_Int
+  
+  )
+
+  if (deleteResult) {
+    req.flash("notice", "The deletion was successful")
+    res.redirect("/inv/")
+  } else {
+    req.flash("notice", "Sorry, the deletion failed.")
+    res.redirect("/inv/delete/" + inv_Id_Int)
+  }
+}
+
 module.exports = invCont
 
 
