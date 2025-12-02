@@ -50,6 +50,17 @@ router.post(
   utilities.handleErrors(invController.updateInventory)
 )
 
+//Route to build the delete view of the item
+router.get("/delete/:inventoryId", utilities.handleErrors(invController.buildDeleteItemView));
+
+// Route to delete the item Inventory
+router.post(
+  "/delete/",
+  inventoryValidate.newInventoryRules(),
+  inventoryValidate.checkDeleteData,
+  utilities.handleErrors(invController.deleteInventory)
+)
+
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(invController.buildBrokenLink));
 
