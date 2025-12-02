@@ -56,8 +56,6 @@ router.get("/delete/:inventoryId", utilities.handleErrors(invController.buildDel
 // Route to delete the item Inventory
 router.post(
   "/delete/",
-  inventoryValidate.newInventoryRules(),
-  inventoryValidate.checkDeleteData,
   utilities.handleErrors(invController.deleteInventory)
 )
 
