@@ -34,6 +34,23 @@ router.post(
 // Route to build when the user is authenticaded
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAuthenticatedAccount));
 
+// Route to build when user whants to update account or password
+router.get("/update", utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccount));
+
+// Route to POST firstName, lastName and email
+router.post(
+  "/updateAccount",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.accountUpdated)
+)
+
+//Route to POST new password
+router.post(
+  "/updatePassword",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.passwordtUpdated)
+)
+
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(accountController.buildBrokenLink));
 
