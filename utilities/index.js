@@ -145,4 +145,18 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedin) {
+    if (res.locals.accountData.account_type === "Admin" || res.locals.accountData.account_type === "Employee" ) {
+      next()
+    } else {
+      req.flash("notice", "Check your credentials and try again.")
+      return res.redirect("/account/login")
+    }
+  } else {
+    req.flash("notice", "Check your credentials and try again.")
+      return res.redirect("/account/login")
+  }
+}
+
 module.exports = Util

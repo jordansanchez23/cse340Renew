@@ -12,50 +12,54 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryId));
 
 //Route to build Management//
-router.get("/", utilities.handleErrors(invController.buildManagement));
+router.get("/", utilities.checkAccountType, utilities.handleErrors(invController.buildManagement));
 
 //Route to build Add Classification view//
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
+router.get("/add-classification", utilities.checkAccountType, utilities.handleErrors(invController.buildAddClassification));
 
 // Route to post the classification 
 router.post(
   "/add-classification",
+  utilities.checkAccountType,
   inventoryValidate.addClassificationRules(),
   inventoryValidate.checkAddClassificationData,
   utilities.handleErrors(invController.processAddClassification)
 )
 
 //Route to build Add Inventory view//
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
+router.get("/add-inventory", utilities.checkAccountType,utilities.handleErrors(invController.buildAddInventory));
 
 // Route to post the add Inventory
 router.post(
   "/add-inventory",
+  utilities.checkAccountType,
   inventoryValidate.addInventoryRules(),
   inventoryValidate.checkAddInventoryData,
   utilities.handleErrors(invController.processAddInventory)
 )
 
 //Route to build the classification List//
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/getInventory/:classification_id", utilities.checkAccountType, utilities.handleErrors(invController.getInventoryJSON))
 
 //Route to build the edit view of the item
-router.get("/edit/:inventoryId", utilities.handleErrors(invController.buildEditView));
+router.get("/edit/:inventoryId", utilities.checkAccountType, utilities.handleErrors(invController.buildEditView));
 
 // Route to update the item Inventory
 router.post(
   "/update/",
+  utilities.checkAccountType,
   inventoryValidate.newInventoryRules(),
   inventoryValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory)
 )
 
 //Route to build the delete view of the item
-router.get("/delete/:inventoryId", utilities.handleErrors(invController.buildDeleteItemView));
+router.get("/delete/:inventoryId", utilities.checkAccountType, utilities.handleErrors(invController.buildDeleteItemView));
 
 // Route to delete the item Inventory
 router.post(
   "/delete/",
+  utilities.checkAccountType,
   utilities.handleErrors(invController.deleteInventory)
 )
 
