@@ -124,10 +124,62 @@ async function buildAuthenticatedAccount(req, res, next) {
   res.render("account/authenticatedAccount", {
     title: "You are logged in",
     nav,
-    errors: null
+    errors: null,
   })
 }
 
+/* ***************************
+ *  Building Update account Data view
+ * ************************** */
+async function buildUpdateAccount(req, res, next) {
+  let nav = await utilities.getNav()
+  const accountData = res.locals.accountData
+  res.render("account/updateAccount", {
+    title: "Edit Account",
+    nav,
+    errors: null,
+    account_firstname: accountData.account_firstname,
+    account_lastname: accountData.account_lastname,
+    account_email: accountData.account_email,
+    account_id: accountData.account_id
+  })
+}
+
+/* ***************************
+ *  Updated account Data
+ * ************************** */
+async function accountUpdated(req, res, next) {
+  let nav = await utilities.getNav()
+  const {
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  } = req.body
+  const updateResult = await accountModel.updateAccount(
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+  )
+
+  if (updateResult) {
+    const itemName = `Congrats ${updateResult.account_firstname}! Your account has been updated`
+    req.flash("notice", itemName)
+    res.redirect("/account/")
+  } else {
+    req.flash("notice", "Sorry, the insert failed.")
+    res.status(501).render("account/updateAccount", {
+    title: "Edit Account",
+    nav,
+    errors: null,
+    account_id,
+    account_firstname,
+    account_lastname,
+    account_email
+    })
+  }
+}
 
 /* ***************************
  *  Build Broken Link
@@ -136,7 +188,7 @@ async function buildAuthenticatedAccount(req, res, next) {
 //  throw error
 //}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAuthenticatedAccount }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAuthenticatedAccount, buildUpdateAccount, accountUpdated }
 
 
 
