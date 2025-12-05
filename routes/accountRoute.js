@@ -41,6 +41,8 @@ router.get("/update", utilities.checkLogin, utilities.handleErrors(accountContro
 router.post(
   "/updateAccount",
   utilities.checkLogin,
+  changingAccountInformationRules(),
+  checkChangingAccountInformation(),
   utilities.handleErrors(accountController.accountUpdated)
 )
 
@@ -48,7 +50,9 @@ router.post(
 router.post(
   "/updatePassword",
   utilities.checkLogin,
-  utilities.handleErrors(accountController.passwordtUpdated)
+  changingPasswordRules(),
+  checkChangingAccountInformation(),
+  utilities.handleErrors(accountController.passwordUpdated)
 )
 
 //Route to get the error 500//
