@@ -182,13 +182,61 @@ async function accountUpdated(req, res, next) {
 }
 
 /* ***************************
+ *  Updated password
+ * ************************** */
+async function passwordUpdated(req, res, next) {
+  let nav = await utilities.getNav()
+  const {
+    account_id,
+    account_password
+  } = req.body
+
+  let hashedPassword
+
+ try {
+      //regular password and cost (salt is generated automatically)
+      hashedPassword = await bcrypt.hash(account_password, 10)
+    } catch(error) {
+      req.flash("notice", 'Sorry, there was an error changing the password.')
+      res.status(500).render("account/updateAccount", {
+        title: "Edit Account",
+        nav,
+        errors: null
+      })
+    }
+
+  const updateResult = await accountModel.updatePassword(
+    account_id,
+    hashedPassword
+  )
+
+  if (updateResult) {
+    req.flash(
+      "notice",
+      `Your password has been changed`
+      
+    ) 
+    res.redirect("/account/")
+  } else {
+    req.flash("notice", "Sorry, error changing the password")
+      res.status(501).render("account/updateAccount", {
+      title: "Edit Account",
+      nav,
+      errors: null
+    })
+  }
+
+}
+
+    
+/* ***************************
  *  Build Broken Link
  * ************************** */
 //accountController.buildBrokenLink = async function (req, res, next) {
 //  throw error
 //}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAuthenticatedAccount, buildUpdateAccount, accountUpdated }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAuthenticatedAccount, buildUpdateAccount, accountUpdated, passwordUpdated }
 
 
 
