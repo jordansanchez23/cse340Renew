@@ -40,4 +40,4 @@ async function getAccountByEmail (account_email) {
 }
 
 
-module.exports = {registerAccount, checkExistingEmail, getAccountByEmail}
+module.exports = {registerAccount, checkExistingEmail, getAccountByEmail, updatePassword}
