@@ -58,5 +58,7 @@ router.post(
 //Route to get the error 500//
 router.get("/broken", utilities.handleErrors(accountController.buildBrokenLink));
 
+// Route to logout
+router.get("/logout", utilities.checkLogin, utilities.handleErrors(accountController.buildLogout));
 
 module.exports = router;

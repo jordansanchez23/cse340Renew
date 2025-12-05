@@ -227,7 +227,17 @@ async function passwordUpdated(req, res, next) {
   }
 
 }
-    
+
+/* ***************************
+ *  Build Logout
+ * ************************** */
+async function buildLogout(req, res, next) {
+  let nav = await utilities.getNav()
+  res.clearCookie("jwt")
+  req.flash("notice", "You've been logged out succesfully")
+  res.redirect("/account/login")
+}
+
 /* ***************************
  *  Build Broken Link
  * ************************** */
@@ -235,7 +245,7 @@ async function passwordUpdated(req, res, next) {
 //  throw error
 //}
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAuthenticatedAccount, buildUpdateAccount, accountUpdated, passwordUpdated }
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAuthenticatedAccount, buildUpdateAccount, accountUpdated, passwordUpdated, buildLogout }
 
 
 
