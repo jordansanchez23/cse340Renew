@@ -41,8 +41,8 @@ router.get("/update", utilities.checkLogin, utilities.handleErrors(accountContro
 router.post(
   "/updateAccount",
   utilities.checkLogin,
-  changingAccountInformationRules(),
-  checkChangingAccountInformation(),
+  regValidate.changingAccountInformationRules(),
+  regValidate.checkChangingAccountInformation,
   utilities.handleErrors(accountController.accountUpdated)
 )
 
@@ -50,8 +50,8 @@ router.post(
 router.post(
   "/updatePassword",
   utilities.checkLogin,
-  changingPasswordRules(),
-  checkChangingAccountInformation(),
+  regValidate.changingPasswordRules(),
+  regValidate.checkChangingAccountInformation,
   utilities.handleErrors(accountController.passwordUpdated)
 )
 
